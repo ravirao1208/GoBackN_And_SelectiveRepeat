@@ -38,4 +38,4 @@ Following are the step to be followed to run the UDPclient
 ##### **Note : observer the terminal for packet transmission and ACK **
 <br>
 ### Output:
-    At the end of file transmission you can find the transmitted file in UDPServer/ServerFiles/\<fileName.txt> .
+     At the end of file transmission you can find transmitted file in UDPServer/ServerFiles/<fileName.txt> .
