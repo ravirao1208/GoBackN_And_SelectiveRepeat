@@ -33,7 +33,7 @@ Following are the step to be followed to run the UDPclient
 1. clone this project into local repository
 2. Navigate into UDPClient folder ( eg :  cd  git/[UDP\_Go\_Back\_N-Protocol](https://github.com/ravirao1208/UDP_Go_Back_N-Protocol)/UDPClient.
 3. complie the program with javac \<file name> [if you wold like to run via command prompt]
-4. run the UDPClient>>src>>App Main method  by passing three arguments(eg: java App \<ServerHostName ServerPort Filename>)  if you are using any Dev tools like VSCode or eclipse, please make sure you pass the arguments.
+4. run the UDPClient>>src>>App Main method  by passing three arguments(eg: java App \<ServerHostName ServerPort Filename 2000>)  if you are using any Dev tools like VSCode or eclipse, please make sure you pass the arguments.
 
 ##### **Note : observer the terminal for packet transmission and ACK **
 <br>
