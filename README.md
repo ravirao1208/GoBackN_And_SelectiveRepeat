@@ -35,7 +35,7 @@ Following are the step to be followed to run the UDPclient
 3. complie the program with javac \<file name> [if you wold like to run via command prompt]
 4. run the UDPClient>>src>>App Main method  by passing three arguments(eg: java App \<ServerHostName ServerPort Filename>)  if you are using any Dev tools like VSCode or eclipse, please make sure you pass the arguments.
 
-##### **Note : observer the terminal for packet transmission and ACK sent and Received**
+##### **Note : observer the terminal for packet transmission and ACK **
 <br>
 ### Output:
     At the end of file transmission you can find the transmitted file in UDPServer/ServerFiles/\<fileName.txt> .
