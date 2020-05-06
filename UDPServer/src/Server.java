@@ -20,7 +20,7 @@ public class Server {
     }
 
     public static Server getInstance(int port, String FILENAME) throws SocketException {
-        if (server.equals(null)) {
+        if (server == null) {
             server = new Server(port);
         }
         return server;
