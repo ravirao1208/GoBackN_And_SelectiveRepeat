@@ -21,7 +21,7 @@ public class Client {
     // the last packet which was received
     public static int CURRENTACKNOWLEDGEDPACKETNUMBER;
     // a pointer to the beginning of the window
-    public static int CURRENTWINDOWPOINTER = 0;
+    public static volatile int CURRENTWINDOWPOINTER = 0;
     public static int WINDOWSIZE = 0;
     public static Boolean CURRENTACKNOWLEDGEDSTATUS = Boolean.TRUE;
     public static Map<Long, Integer> PACKETSENDTIME = new HashMap<>();
@@ -61,6 +61,7 @@ public class Client {
         InetAddress serverAdress = InetAddress.getByName(serverHostName);
         while (CURRENTWINDOWPOINTER <= byteArray2.length - 1
                 && CURRENTACKNOWLEDGEDSTATUS.equals(Boolean.TRUE)) {
+
             goBackNProtocol(CURRENTWINDOWPOINTER, windowSize - 1, byteArray2, Client.getInstane(),
                     maximumSegmentSize, serverAdress, serverPortNumber);
         }
@@ -89,7 +90,7 @@ public class Client {
                 System.out.println("Packet No: " + i + "\t Status : Sent \t Time : "
                         + System.currentTimeMillis());
                 PACKETSENDTIME.put(System.currentTimeMillis() + 10000, i);
-                Thread.sleep(10);
+                Thread.sleep(30);
             }
 
         }
