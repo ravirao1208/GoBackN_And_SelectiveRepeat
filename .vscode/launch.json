@@ -12,14 +12,14 @@
         },
         {
             "type": "java",
-            "name": "Debug (Launch)-ClientApp<UDP_GO_BACK_N_CLIENT>",
+            "name": "ClientApp<UDP_GO_BACK_N_CLIENT>",
             "request": "launch",
             "mainClass": "com.java.client.ClientApp",
             "projectName": "UDP_GO_BACK_N_CLIENT"
         },
         {
             "type": "java",
-            "name": "Debug (Launch)-ServerApp<UDP_GO_BACK_N_SERVER>",
+            "name": "ServerApp<UDP_GO_BACK_N_SERVER>",
             "request": "launch",
             "mainClass": "com.java.server.ServerApp",
             "projectName": "UDP_GO_BACK_N_SERVER"
