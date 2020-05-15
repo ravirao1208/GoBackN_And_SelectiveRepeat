@@ -23,6 +23,22 @@
             "request": "launch",
             "mainClass": "com.java.server.ServerApp",
             "projectName": "UDP_GO_BACK_N_SERVER"
+        },
+        {
+            "type": "java",
+            "name": "UDP_SELECTIVE_REPEAT_CLIENT",
+            "request": "launch",
+            "mainClass": "com.java.selectiverepeat.client.ClientApp",
+            "projectName": "UDP_SELECTIVE_REPEAT_CLIENT",
+            "args": "localhost 9091 clientfile 5 2000"
+        },
+        {
+            "type": "java",
+            "name": "UDP_SELECTIVE_REPEAT_SERVER",
+            "request": "launch",
+            "mainClass": "com.java.selectiverepeat.server.ServerApp",
+            "projectName": "UDP_SELECTIVE_REPEAT_SERVER",
+            "args": "9091 clientcopy 0.1 5"
         }
     ]
 }
