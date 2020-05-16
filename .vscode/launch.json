@@ -6,12 +6,6 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Debug (Launch) - Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
             "name": "ClientApp<UDP_GO_BACK_N_CLIENT>",
             "request": "launch",
             "mainClass": "com.java.client.ClientApp",
@@ -39,6 +33,40 @@
             "mainClass": "com.java.selectiverepeat.server.ServerApp",
             "projectName": "UDP_SELECTIVE_REPEAT_SERVER",
             "args": "9091 clientcopy 0.1 5"
+        },
+        {
+            "type": "java",
+            "name": "UDP_STANDARD_CLIENT",
+            "request": "launch",
+            "mainClass": "com.java.standard.udp.client.ClientApp",
+            "projectName": "UDP_STANDARD_CLIENT"
+        },
+        {
+            "type": "java",
+            "name": "UDP_STANDARD_SERVER",
+            "request": "launch",
+            "mainClass": "com.java.standard.udp.server.ServerApp",
+            "projectName": "UDP_STANDARD_SERVER"
+        },
+        {
+            "type": "java",
+            "name": "TCP_STANDARD_SERVER",
+            "request": "launch",
+            "mainClass": "com.java.standard.tcp.server.ServerApp",
+            "projectName": "TCP_STANDARD_SERVER"
+        },
+        {
+            "type": "java",
+            "name": "TCP_STANDARD_CLIENT",
+            "request": "launch",
+            "mainClass": "com.java.standard.tcp.client.ClientApp",
+            "projectName": "TCP_STANDARD_CLIENT"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
         }
     ]
 }
