@@ -14,13 +14,13 @@ public class FileServer {
     private BufferedInputStream bis = null;
     private OutputStream os = null;
 
-    public FileServer(int port, String path) throws Exception {
+    public FileServer(int port) throws Exception {
         try {
-            System.out.println("Server running...");
+            this.path = System.getProperty("java.class.path") + "\\..\\resources";
+            System.out.println("Serving directory '" + path + "' on port " + port + "...");
             sersocket = new ServerSocket(port);
             socket = sersocket.accept();
             System.out.println("Accepted connection : " + socket);
-            this.path = path;
         } catch (SocketException e) {
             System.out.println(e);
         }
