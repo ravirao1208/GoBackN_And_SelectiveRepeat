@@ -22,6 +22,8 @@ public class Client {
     public static int CURRENTACKNOWLEDGEDPACKETNUMBER;
     // a pointer to the beginning of the window
     public static volatile int CURRENTWINDOWPOINTER = 0;
+    public static Long CONNECTION_TIME_OUT = System.currentTimeMillis() + 2000;
+    public static Boolean isServerAvailable = true;
     public static int WINDOWSIZE = 0;
     public static Boolean CURRENTACKNOWLEDGEDSTATUS = Boolean.TRUE;
     public static Map<Long, Integer> PACKETSENDTIME = new HashMap<>();
@@ -61,11 +63,20 @@ public class Client {
         InetAddress serverAdress = InetAddress.getByName(serverHostName);
         while (CURRENTWINDOWPOINTER <= byteArray2.length - 1
                 && CURRENTACKNOWLEDGEDSTATUS.equals(Boolean.TRUE)) {
-
+            if (CONNECTION_TIME_OUT <= System.currentTimeMillis() && CONNECTION_TIME_OUT != null) {
+                System.out.println("Server couldn't respond: Please try again after some time.");
+                isServerAvailable = false;
+                break;
+            }
+            CONNECTION_TIME_OUT = System.currentTimeMillis() + 2000;
             goBackNProtocol(CURRENTWINDOWPOINTER, windowSize - 1, byteArray2, Client.getInstane(),
                     maximumSegmentSize, serverAdress, serverPortNumber);
         }
-        System.out.println("The process is over.");
+        if (isServerAvailable) {
+            System.out.println("Client program terminated!");
+            System.exit(0);
+        } else
+            System.out.println("The process is over.");
     }
 
     private void goBackNProtocol(int sendingWindowPointer, int windowSize, byte[][] byteArray,
