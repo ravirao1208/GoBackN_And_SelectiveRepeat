@@ -38,8 +38,90 @@ Following are the step to be followed to run the UDPclient
     * Enter the window size (eg: 5)
     * Entet the Max Segment size ( < 2001) (eg: 2000)
 
-##### \*\*Note : observer the terminal for packet transmission and ACK \*\*
+##### \*\*Note : observe the terminal for packet transmission and ACK \*\*
 
 ### Output:
 
 At the end of file transmission you can find  file created in the UDP\_GO\_BACK\_N\_SERVER/resources/serverfiles/\<filename that you gave> with data in it.
+
+# Standard Implementation
+
+## TCP Standard
+
+There are  two subfolders assocaited with TCP - Standard
+
+1. TCP\_STANDARD\_CLIENT
+2. TCP\_STANDARD\_SERVER
+
+Always run server first and then run the client
+
+#### TCP\_STANDARD\_SERVER:
+
+The job of this module is to accept a filename from the request and serve the file in response to the request.
+Following are the step to be followed to run the TCP\_STANDARD\_SERVER:
+
+1. Click on the Run and Debug icon on the IDE.
+2. Select <TCP\_STANDARD\_SERVER> from the launch config file.
+3. As the you select and run new terminal will pop. You can see that the server is now serving files in the resources folder in the directory TCP\_STANDARD\_SERVER.
+
+#### TCP\_STANDARD\_CLIENT:
+
+The job of this module is to request for a file from the server and accept the file received as response and store it.
+
+Following are the step to be followed to run the TCP\_STANDARD\_CLIENT:
+
+1. Click on the Run and Debug icon on the IDE.
+2. Select <TCP\_STANDARD\_CLIENT> from the launch config file.
+3. As the you select and run new terminal will pop. You can see that the client is requesting for a file 'demo_file.txt' from the server.
+
+##### Output:
+
+At the end of file transmission you can find the file transferred and written into the 'received' directory as 'received_file.txt'
+
+### Screenshots - TCP
+
+Server:<br>
+![](screenshots/TCP_Server.png)
+
+Client:<br>
+![](screenshots/TCP_Client.png)
+
+## UDP Standard
+
+There are  two subfolders assocaited with TCP - Standard
+
+1. UDP\_STANDARD\_CLIENT
+2. UDP\_STANDARD\_SERVER
+
+Always run server first and then run the client
+
+#### UDP\_STANDARD\_SERVER:
+
+The job of this module is to accept a filename from the request and serve the file in response to the request.
+Following are the step to be followed to run the UDP\_STANDARD\_SERVER:
+
+1. Click on the Run and Debug icon on the IDE.
+2. Select <UDP\_STANDARD\_SERVER> from the launch config file.
+3. As the you select and run new terminal will pop. You can see that the server is now serving files in the resources folder in the directory UDP\_STANDARD\_SERVER.
+
+#### UDP\_STANDARD\_CLIENT:
+
+The job of this module is to request for a file from the server and accept the file received as response and store it.
+
+Following are the step to be followed to run the UDP\_STANDARD\_CLIENT:
+
+1. Click on the Run and Debug icon on the IDE.
+2. Select <UDP\_STANDARD\_CLIENT> from the launch config file.
+3. As the you select and run new terminal will pop. You can see that the client is requesting for a file 'demo_file.txt' from the server.
+
+##### Output:
+
+At the end of file transmission you can find the file transferred and written into the 'received' directory as 'received_file.txt'
+
+### Screenshots - UDP
+
+Server:<br>
+![](screenshots/UDP_Server.png)
+
+Client:<br>
+![](screenshots/UDP_Client.png)

@@ -39,28 +39,32 @@
             "name": "UDP_STANDARD_CLIENT",
             "request": "launch",
             "mainClass": "com.java.standard.udp.client.ClientApp",
-            "projectName": "UDP_STANDARD_CLIENT"
+            "projectName": "UDP_STANDARD_CLIENT",
+            "args": "localhost 9095 demo_file.txt"
         },
         {
             "type": "java",
             "name": "UDP_STANDARD_SERVER",
             "request": "launch",
             "mainClass": "com.java.standard.udp.server.ServerApp",
-            "projectName": "UDP_STANDARD_SERVER"
+            "projectName": "UDP_STANDARD_SERVER",
+            "args": "9095"
         },
         {
             "type": "java",
             "name": "TCP_STANDARD_SERVER",
             "request": "launch",
             "mainClass": "com.java.standard.tcp.server.ServerApp",
-            "projectName": "TCP_STANDARD_SERVER"
+            "projectName": "TCP_STANDARD_SERVER",
+            "args": "9094"
         },
         {
             "type": "java",
             "name": "TCP_STANDARD_CLIENT",
             "request": "launch",
             "mainClass": "com.java.standard.tcp.client.ClientApp",
-            "projectName": "TCP_STANDARD_CLIENT"
+            "projectName": "TCP_STANDARD_CLIENT",
+            "args": "localhost 9094 demo_file.txt"
         },
         {
             "type": "java",

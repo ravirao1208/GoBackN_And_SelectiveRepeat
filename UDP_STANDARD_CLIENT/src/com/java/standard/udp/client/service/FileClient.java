@@ -2,7 +2,6 @@ package com.java.standard.udp.client.service;
 
 import java.io.IOException;
 import java.net.SocketException;
-import java.util.Scanner;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.net.DatagramPacket;
@@ -13,43 +12,38 @@ public class FileClient {
     private String IPAddress;
     private int Port;
     private DatagramSocket socket;
+    private String fileName;
 
-    public FileClient(String IPAddress, int port) throws SocketException {
+    public FileClient(String IPAddress, int port, String fileName) throws SocketException {
         this.IPAddress = IPAddress;
+        this.fileName = fileName;
         Port = port;
         socket = new DatagramSocket();
     }
 
     public void service() throws IOException {
         try {
-            Scanner sc = new Scanner(System.in);
-            System.out.println("\n---------------------------------------------------------");
-            System.out.println("      UDP Client to download the files from server");
-            System.out.println("---------------------------------------------------------");
-            System.out.println("Enter 1 : to download the file\nEnter 2 : to Exit \n");
-            if (sc.nextInt() == 1) {
+            byte[] buffer = fileName.getBytes();
+            DatagramPacket request = new DatagramPacket(buffer, buffer.length, InetAddress.getByName(IPAddress), Port);
+            socket.send(request);
+            byte[] responseBuffer = new byte[123456789];
+            DatagramPacket response = new DatagramPacket(responseBuffer, responseBuffer.length);
+            socket.receive(response);
 
-                System.out.println("Enter the filename with extension");
-                String fileName = sc.next();
-                byte[] buffer = fileName.getBytes();
-                DatagramPacket request = new DatagramPacket(buffer, buffer.length, InetAddress.getByName(IPAddress),
-                        Port);
-                socket.send(request);
-                byte[] responseBuffer = new byte[123456789];
-                DatagramPacket response = new DatagramPacket(responseBuffer, responseBuffer.length);
-                socket.receive(response);
+            if (response.getLength() != 0) {
 
-                if (response.getLength() != 0) {
-                    File receivedFile = new File(fileName);
-                    FileOutputStream f = new FileOutputStream(receivedFile);
-                    f.write(responseBuffer, 0, response.getLength());
-                    f.close();
-                    sc.close();
-                    System.out.println("File " + fileName + " downloaded successfully");
-                } else {
-                    sc.close();
-                    throw new ArrayIndexOutOfBoundsException("Invalid File or File not found!");
-                }
+                String classPath = System.getProperty("java.class.path");
+                String receivedFileName = classPath.substring(0, classPath.length() - 3)
+                        + "received\\received_file.txt";
+
+                File receivedFile = new File(receivedFileName);
+                receivedFile.createNewFile();
+                FileOutputStream f = new FileOutputStream(receivedFile);
+                f.write(responseBuffer, 0, response.getLength());
+                f.close();
+                System.out.println("File " + fileName + " downloaded successfully");
+            } else {
+                throw new ArrayIndexOutOfBoundsException("Invalid File or File not found!");
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println(e.getMessage());
