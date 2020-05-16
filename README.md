@@ -43,9 +43,45 @@ Following are the step to be followed to run the UDPclient
 
 At the end of file transmission you can find  file created in the UDP\_GO\_BACK\_N\_SERVER/resources/serverfiles/\<filename that you gave> with data in it.
 
-# 2: Standard TCP and UDP Implementation
+# 2: UDP SELECTIVE REPEAT:
 
-#### 2.1.1: TCP Standard
+There are  two Subfolders assocaited with UDP - Go back N
+
+1. UDP\_SELECTIVE\_REPEAT\_CLIENT
+2. UDP\_SELECTIVE\_REPEAT\_SERVER
+
+Always run server first and then run the client
+
+#### 2.1: UDP\_SELECTIVE\_REPEAT\_SERVER :
+
+The job of this module is to accept packet and store it in the file and also send ACK back for the packet received.
+Following are the step to be followed to run the UDP\_SELECTIVE\_REPEAT\_SERVER
+
+1. Click on the Run and Debug icon on the IDE.
+2. Select <span class="colour" style="color: rgb(152, 195, 121);">ServerApp<UDP\_SELECTIVE\_REPEAT\_SERVER> </span><span class="colour" style="color: rgb(152, 195, 121);"> from the launch config file.</span>
+3. As the you select and run new terminal will pop. In the terminal you can observe the packets getting received.
+    
+
+#### 2.2: UDP\_SELECTIVE\_REPEAT\_CLIENT :
+
+Job of this module is to transer the file packets to UDP server and also makes sures that with in the time limit if ACK is not received for the packet sent the packets lost are retransmitted.
+Following are the step to be followed to run the UDPclient
+
+1. Click on the Run and Debug icon on the IDE
+2. Select <span class="colour" style="color: rgb(152, 195, 121);">ClientApp<UDP\_SELECTIVE\_REPEAT\_CLIENT></span><span class="colour" style="color: rgb(152, 195, 121);">  from the launch config file.</span>
+3. As the you select and run new terminal will pop. In the terminal you can observe the packets getting transferred.
+   
+
+#### \*\*Note : observe the terminal for packet transmission and ACK \*\*
+
+#### Output:
+
+At the end of file transmission you can find  file created in the UDP\_SELECTIVE\_REPEAT\_SERVER/resources/serverfiles/\<filename that you gave in arguments> with data in it.
+
+
+# 3: Standard TCP and UDP Implementation
+
+#### 3.1.1: TCP Standard
 
 There are  two subfolders assocaited with TCP - Standard
 
@@ -73,7 +109,7 @@ Following are the step to be followed to run the TCP\_STANDARD\_CLIENT:
 2. Select <TCP\_STANDARD\_CLIENT> from the launch config file.
 3. As the you select and run new terminal will pop. You can see that the client is requesting for a file 'demo_file.txt' from the server.
 
-#### 2.1.2: Output:
+#### 3.1.2: Output:
 
 At the end of file transmission you can find the file transferred and written into the 'received' directory as 'received_file.txt'
 
@@ -85,7 +121,7 @@ Server:<br>
 Client:<br>
 ![](screenshots/TCP_Client.png)
 
-#### 2.2.1: UDP Standard
+#### 3.2.1: UDP Standard
 
 There are  two subfolders assocaited with TCP - Standard
 
@@ -113,7 +149,7 @@ Following are the step to be followed to run the UDP\_STANDARD\_CLIENT:
 2. Select <UDP\_STANDARD\_CLIENT> from the launch config file.
 3. As the you select and run new terminal will pop. You can see that the client is requesting for a file 'demo_file.txt' from the server.
 
-#### 2.2.2: Output:
+#### 3.2.2: Output:
 
 At the end of file transmission you can find the file transferred and written into the 'received' directory as 'received_file.txt'
 
