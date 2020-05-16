@@ -1,11 +1,10 @@
-# 1: UDP-Go Back N Protocol 
-[Github link](https://github.com/ravirao1208/UDP_Go_Back_N-Protocol.git)
-
-### Prerequisites :
+## Prerequisites :
 
 * Java 8 installed
 * VS Code IDE.
 
+# 1: UDP-Go Back N Protocol 
+[Github link](https://github.com/ravirao1208/UDP_Go_Back_N-Protocol.git)
 There are  two Subfolders assocaited with UDP - Go back N
 
 1. UDP\_GO\_BACK\_N\_CLIENT
@@ -45,7 +44,7 @@ At the end of file transmission you can find  file created in the UDP\_GO\_BAC
 
 # 2: UDP SELECTIVE REPEAT:
 
-There are  two Subfolders assocaited with UDP - Go back N
+There are  two Subfolders assocaited with UDP SELECTIVE REPEAT
 
 1. UDP\_SELECTIVE\_REPEAT\_CLIENT
 2. UDP\_SELECTIVE\_REPEAT\_SERVER
