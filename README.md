@@ -1,6 +1,5 @@
-# UDP- Go Back N Protocol
-
-[https://github.com/ravirao1208/UDP\_Go\_Back\_N-Protocol.git](https://github.com/ravirao1208/UDP_Go_Back_N-Protocol.git)
+# 1: UDP-Go Back N Protocol 
+[Github link](https://github.com/ravirao1208/UDP_Go_Back_N-Protocol.git)
 
 ### Prerequisites :
 
@@ -14,7 +13,7 @@ There are  two Subfolders assocaited with UDP - Go back N
 
 Always run server first and then run the client
 
-#### UDP\_GO\_BACK\_N\_SERVER :
+#### 1.1: UDP\_GO\_BACK\_N\_SERVER :
 
 The job of this module is to accept packet and store it in the file and also send ACK back for the packet received.
 Following are the step to be followed to run the UDP\_GO\_BACK\_N\_SERVER
@@ -25,7 +24,7 @@ Following are the step to be followed to run the UDP\_GO\_BACK\_N\_SERVER
     * Enter server port number (eg: 9093)
     * Enter file name to where the packets to be stored (eg : serverCopyFile)
 
-#### UDP\_GO\_BACK\_N\_CLIENT :
+#### 1.2: UDP\_GO\_BACK\_N\_CLIENT :
 
 Job of this module is to transer the file packets to UDP server and also makes sures that with in the time limit if ACK is not received for the packet sent current window packets are retransmitted.
 Following are the step to be followed to run the UDPclient
@@ -40,13 +39,13 @@ Following are the step to be followed to run the UDPclient
 
 ##### \*\*Note : observe the terminal for packet transmission and ACK \*\*
 
-### Output:
+#### 1.3: Output:
 
 At the end of file transmission you can find  file created in the UDP\_GO\_BACK\_N\_SERVER/resources/serverfiles/\<filename that you gave> with data in it.
 
-# Standard Implementation
+# 2: Standard TCP and UDP Implementation
 
-## TCP Standard
+#### 2.1.1: TCP Standard
 
 There are  two subfolders assocaited with TCP - Standard
 
@@ -74,11 +73,11 @@ Following are the step to be followed to run the TCP\_STANDARD\_CLIENT:
 2. Select <TCP\_STANDARD\_CLIENT> from the launch config file.
 3. As the you select and run new terminal will pop. You can see that the client is requesting for a file 'demo_file.txt' from the server.
 
-##### Output:
+#### 2.1.2: Output:
 
 At the end of file transmission you can find the file transferred and written into the 'received' directory as 'received_file.txt'
 
-### Screenshots - TCP
+#### Screenshots - TCP
 
 Server:<br>
 ![](screenshots/TCP_Server.png)
@@ -86,7 +85,7 @@ Server:<br>
 Client:<br>
 ![](screenshots/TCP_Client.png)
 
-## UDP Standard
+#### 2.2.1: UDP Standard
 
 There are  two subfolders assocaited with TCP - Standard
 
@@ -114,11 +113,11 @@ Following are the step to be followed to run the UDP\_STANDARD\_CLIENT:
 2. Select <UDP\_STANDARD\_CLIENT> from the launch config file.
 3. As the you select and run new terminal will pop. You can see that the client is requesting for a file 'demo_file.txt' from the server.
 
-##### Output:
+#### 2.2.2: Output:
 
 At the end of file transmission you can find the file transferred and written into the 'received' directory as 'received_file.txt'
 
-### Screenshots - UDP
+#### Screenshots - UDP
 
 Server:<br>
 ![](screenshots/UDP_Server.png)
