@@ -22,7 +22,7 @@ Following are the step to be followed to run the UDP\_GO\_BACK\_N\_SERVER
 3. As the you select and run new terminal will pop
     * Enter server port number (eg: 9093)
     * Enter file name to where the packets to be stored (eg : serverCopyFile)
-
+![](screenshots/udp_go_server.png)
 #### 1.2: UDP\_GO\_BACK\_N\_CLIENT :
 
 Job of this module is to transer the file packets to UDP server and also makes sures that with in the time limit if ACK is not received for the packet sent current window packets are retransmitted.
@@ -35,7 +35,7 @@ Following are the step to be followed to run the UDPclient
     * Enter Server port number (eg: 9093)
     * Enter the window size (eg: 5)
     * Entet the Max Segment size ( < 2001) (eg: 2000)
-
+![](screenshots/udp_go_client.png)
 ##### \*\*Note : observe the terminal for packet transmission and ACK \*\*
 
 #### 1.3: Output:
