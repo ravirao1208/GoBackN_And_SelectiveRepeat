@@ -138,7 +138,7 @@ public class ClientApp {
 		}
 		long endTime = System.currentTimeMillis();
 		long totalTime = endTime - startTime;
-		System.out.println("Total time in milliseconds : " + TimeUnit.MILLISECONDS.toSeconds(totalTime));
+		System.out.println("Total time in seconds : " + TimeUnit.MILLISECONDS.toSeconds(totalTime));
 	}
 
 }
