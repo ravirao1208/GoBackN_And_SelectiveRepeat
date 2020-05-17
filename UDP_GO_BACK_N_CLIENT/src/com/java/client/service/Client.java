@@ -73,7 +73,6 @@ public class Client {
         }
         if (isServerAvailable) {
             System.out.println("Client program terminated!");
-            System.exit(0);
         } else
             System.out.println("The process is over.");
     }
