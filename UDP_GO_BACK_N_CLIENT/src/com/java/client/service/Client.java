@@ -6,6 +6,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -54,26 +55,40 @@ public class Client {
     public void sendpacketToServer(String serverHostName, int serverPortNumber, String fileName,
             int windowSize, int maximumSegmentSize) throws IOException, InterruptedException {
         WINDOWSIZE = windowSize;
-        Path path =
-                Paths.get(System.getProperty("java.class.path") + "\\..\\resources\\" + fileName);
-        byte[] byteArray = Files.readAllBytes(path);
-        byte[][] byteArray2 = ClientHelper.chunkArray(byteArray, maximumSegmentSize);
-        System.out.println("Total no of packets :" + byteArray2.length);
-        InetAddress serverAdress = InetAddress.getByName(serverHostName);
-        while (CURRENTWINDOWPOINTER <= byteArray2.length - 1
-                && CURRENTACKNOWLEDGEDSTATUS.equals(Boolean.TRUE)) {
-            if (CONNECTION_TIME_OUT <= System.currentTimeMillis() && CONNECTION_TIME_OUT != null) {
-                System.out.println("Server couldn't respond: Please try again after some time.");
-                isServerAvailable = false;
-                break;
+        try {
+            Path path = Paths
+                    .get(System.getProperty("java.class.path") + "\\..\\resources\\" + fileName);
+            byte[] byteArray = Files.readAllBytes(path);
+            byte[][] byteArray2 = ClientHelper.chunkArray(byteArray, maximumSegmentSize);
+            System.out.println("Total no of packets :" + byteArray2.length);
+            InetAddress serverAdress = InetAddress.getByName(serverHostName);
+            while (CURRENTWINDOWPOINTER <= byteArray2.length - 1
+                    && CURRENTACKNOWLEDGEDSTATUS.equals(Boolean.TRUE)) {
+                if (CONNECTION_TIME_OUT <= System.currentTimeMillis()
+                        && CONNECTION_TIME_OUT != null) {
+                    System.out
+                            .println("Server couldn't respond: Please try again after some time.");
+                    isServerAvailable = false;
+                    break;
+                }
+                goBackNProtocol(CURRENTWINDOWPOINTER, windowSize - 1, byteArray2,
+                        Client.getInstane(), maximumSegmentSize, serverAdress, serverPortNumber);
             }
-            goBackNProtocol(CURRENTWINDOWPOINTER, windowSize - 1, byteArray2, Client.getInstane(),
-                    maximumSegmentSize, serverAdress, serverPortNumber);
+            if (!isServerAvailable) {
+                System.out.println("Client program terminated!");
+            } else
+                System.out.println("The process is over.");
+        } catch (Exception e) {
+            if (e instanceof NoSuchFileException) {
+                System.out.println("Client couldn't find the file that you mentioned.");
+                System.out.println("Status : 404 Not found");
+                System.out.println(e.getCause().getMessage());
+            } else {
+                System.out.println("Client ran into problem.");
+                System.out.println("Status : 500 Internal error");
+                System.out.println(e.getCause().getMessage());
+            }
         }
-        if (!isServerAvailable) {
-            System.out.println("Client program terminated!");
-        } else
-            System.out.println("The process is over.");
     }
 
     private void goBackNProtocol(int sendingWindowPointer, int windowSize, byte[][] byteArray,
