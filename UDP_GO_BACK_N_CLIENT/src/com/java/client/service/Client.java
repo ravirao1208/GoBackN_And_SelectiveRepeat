@@ -54,9 +54,8 @@ public class Client {
     public void sendpacketToServer(String serverHostName, int serverPortNumber, String fileName,
             int windowSize, int maximumSegmentSize) throws IOException, InterruptedException {
         WINDOWSIZE = windowSize;
-        Path path = Paths.get(
-                System.getProperty("java.class.path") + "\\..\\resources\\" + fileName + ".txt");
-
+        Path path =
+                Paths.get(System.getProperty("java.class.path") + "\\..\\resources\\" + fileName);
         byte[] byteArray = Files.readAllBytes(path);
         byte[][] byteArray2 = ClientHelper.chunkArray(byteArray, maximumSegmentSize);
         System.out.println("Total no of packets :" + byteArray2.length);
