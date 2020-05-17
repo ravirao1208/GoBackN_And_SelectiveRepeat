@@ -59,8 +59,7 @@ Following are the step to be followed to run the UDP\_SELECTIVE\_REPEAT\_SERVER
 1. Click on the Run and Debug icon on the IDE.
 2. Select <span class="colour" style="color: rgb(152, 195, 121);">ServerApp<UDP\_SELECTIVE\_REPEAT\_SERVER> </span><span class="colour" style="color: rgb(152, 195, 121);"> from the launch config file.</span>
 3. As the you select and run new terminal will pop. In the terminal you can observe the packets getting received.
-    
-
+    ![](screenshots/sel_server.png)
 #### 2.2: UDP\_SELECTIVE\_REPEAT\_CLIENT :
 
 Job of this module is to transer the file packets to UDP server and also makes sures that with in the time limit if ACK is not received for the packet sent the packets lost are retransmitted.
@@ -107,6 +106,7 @@ Following are the step to be followed to run the TCP\_STANDARD\_CLIENT:
 1. Click on the Run and Debug icon on the IDE.
 2. Select <TCP\_STANDARD\_CLIENT> from the launch config file.
 3. As the you select and run new terminal will pop. You can see that the client is requesting for a file 'demo_file.txt' from the server.
+![](screenshots/sel_clinet.png)
 
 #### 3.1.2: Output:
 
