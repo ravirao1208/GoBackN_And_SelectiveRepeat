@@ -22,7 +22,7 @@ public class Client {
     public static int CURRENTACKNOWLEDGEDPACKETNUMBER;
     // a pointer to the beginning of the window
     public static volatile int CURRENTWINDOWPOINTER = 0;
-    public static Long CONNECTION_TIME_OUT = System.currentTimeMillis() + 2000;
+    public static volatile Long CONNECTION_TIME_OUT = System.currentTimeMillis() + 600;
     public static Boolean isServerAvailable = true;
     public static int WINDOWSIZE = 0;
     public static Boolean CURRENTACKNOWLEDGEDSTATUS = Boolean.TRUE;
@@ -67,11 +67,10 @@ public class Client {
                 isServerAvailable = false;
                 break;
             }
-            CONNECTION_TIME_OUT = System.currentTimeMillis() + 2000;
             goBackNProtocol(CURRENTWINDOWPOINTER, windowSize - 1, byteArray2, Client.getInstane(),
                     maximumSegmentSize, serverAdress, serverPortNumber);
         }
-        if (isServerAvailable) {
+        if (!isServerAvailable) {
             System.out.println("Client program terminated!");
         } else
             System.out.println("The process is over.");

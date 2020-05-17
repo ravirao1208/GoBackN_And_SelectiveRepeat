@@ -21,7 +21,7 @@ public class ReceivePacket extends Thread {
                     System.out.println("ACK Received for packet :" + (ack_No - 1));
                 } else
                     System.out.println("ACK Received for duplicate packet :" + (ack_No - 1));
-
+                    Client.CONNECTION_TIME_OUT = System.currentTimeMillis() + 600;
                 if (Client.CURRENTWINDOWPOINTER == ack_No - 1) {
                     Client.CURRENTWINDOWPOINTER = ack_No;
                     for (int i = ack_No; i < ack_No + Client.WINDOWSIZE; i++) {
