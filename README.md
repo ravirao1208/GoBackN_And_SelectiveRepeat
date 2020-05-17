@@ -68,6 +68,7 @@ Following are the step to be followed to run the UDPclient
 1. Click on the Run and Debug icon on the IDE
 2. Select <span class="colour" style="color: rgb(152, 195, 121);">ClientApp<UDP\_SELECTIVE\_REPEAT\_CLIENT></span><span class="colour" style="color: rgb(152, 195, 121);">  from the launch config file.</span>
 3. As the you select and run new terminal will pop. In the terminal you can observe the packets getting transferred.
+   ![](screenshots/sel_client.png)
    
 
 #### \*\*Note : observe the terminal for packet transmission and ACK \*\*
