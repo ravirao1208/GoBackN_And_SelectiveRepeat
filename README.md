@@ -40,8 +40,12 @@ Following are the step to be followed to run the UDPclient
     ![](screenshots/udp_go_client.png)
 
 ##### \*\*Note : observe the terminal for packet transmission and ACK \*\*
- * ![](screenshots/udp_go_back_client_ACK.png)
- * ![](screenshots/udp_go_back_server_ACK.png)
+
+Client :
+![](screenshots/udp_go_back_client_ACK.png)
+Server :
+![](screenshots/udp_go_back_server_ACK.png)
+
 #### 1.3: Output:
 
 At the end of file transmission you can find  file created in the UDP\_GO\_BACK\_N\_SERVER/resources/serverfiles/\<filename that you gave> with data in it.
@@ -76,7 +80,9 @@ Following are the step to be followed to run the UDPclient
 ![](screenshots/sel_client.png)
 
 #### \*\*Note : observe the terminal for packet transmission and ACK \*\*
- 
+
+![](screenshots/sel_output.png)
+
 #### Output:
 
 At the end of file transmission you can find  file created in the UDP\_SELECTIVE\_REPEAT\_SERVER/resources/serverfiles/\<filename that you gave in arguments> with data in it.

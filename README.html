@@ -383,7 +383,7 @@ There are  two Subfolders assocaited with UDP - Go back N</p>
 Following are the step to be followed to run the UDP_GO_BACK_N_SERVER</p>
 <ol>
 <li>Click on the Run and Debug icon on the IDE.</li>
-<li>Select <span class="colour" style="color: rgb(152, 195, 121);">ServerApp&lt;UDP_GO_BACK_N_SERVER&gt; </span><span class="colour" style="color: rgb(152, 195, 121);"> from the launch config file.</span></li>
+<li>Select <span class="colour" style="color:rgb(152, 195, 121)">ServerApp&lt;UDP_GO_BACK_N_SERVER&gt; </span><span class="colour" style="color:rgb(152, 195, 121)"> from the launch config file.</span></li>
 <li>As the you select and run new terminal will pop
 <ul>
 <li>Enter server port number (eg: 9093)</li>
@@ -397,7 +397,7 @@ Following are the step to be followed to run the UDP_GO_BACK_N_SERVER</p>
 Following are the step to be followed to run the UDPclient</p>
 <ol>
 <li>Click on the Run and Debug icon on the IDE</li>
-<li>Select <span class="colour" style="color: rgb(152, 195, 121);">ClientApp&lt;UDP_GO_BACK_N_CLIENT&gt;</span><span class="colour" style="color: rgb(152, 195, 121);">  from the launch config file.</span></li>
+<li>Select <span class="colour" style="color:rgb(152, 195, 121)">ClientApp&lt;UDP_GO_BACK_N_CLIENT&gt;</span><span class="colour" style="color:rgb(152, 195, 121)">  from the launch config file.</span></li>
 <li>As the you select and run new terminal will pop there
 <ul>
 <li>Enter the server HostName  as localhost if the server is running with in the server if not please pass valid hostname (eg : localhost)</li>
@@ -409,6 +409,10 @@ Following are the step to be followed to run the UDPclient</p>
 </li>
 </ol>
 <h5 id="note--observe-the-terminal-for-packet-transmission-and-ack">**Note : observe the terminal for packet transmission and ACK **</h5>
+<p>Client :
+<img src="screenshots/udp_go_back_client_ACK.png" alt="">
+Server :
+<img src="screenshots/udp_go_back_server_ACK.png" alt=""></p>
 <h4 id="13-output">1.3: Output:</h4>
 <p>At the end of file transmission you can find  file created in the UDP_GO_BACK_N_SERVER/resources/serverfiles/&lt;filename that you gave&gt; with data in it.</p>
 <h1 id="2-udp-selective-repeat">2: UDP SELECTIVE REPEAT:</h1>
@@ -423,7 +427,7 @@ Following are the step to be followed to run the UDPclient</p>
 Following are the step to be followed to run the UDP_SELECTIVE_REPEAT_SERVER</p>
 <ol>
 <li>Click on the Run and Debug icon on the IDE.</li>
-<li>Select <span class="colour" style="color: rgb(152, 195, 121);">ServerApp&lt;UDP_SELECTIVE_REPEAT_SERVER&gt; </span><span class="colour" style="color: rgb(152, 195, 121);"> from the launch config file.</span></li>
+<li>Select <span class="colour" style="color:rgb(152, 195, 121)">ServerApp&lt;UDP_SELECTIVE_REPEAT_SERVER&gt; </span><span class="colour" style="color:rgb(152, 195, 121)"> from the launch config file.</span></li>
 <li>As the you select and run new terminal will pop. In the terminal you can observe the packets getting received.
 <img src="screenshots/sel_server.png" alt=""></li>
 </ol>
@@ -432,11 +436,12 @@ Following are the step to be followed to run the UDP_SELECTIVE_REPEAT_SERVER</p>
 Following are the step to be followed to run the UDPclient</p>
 <ol>
 <li>Click on the Run and Debug icon on the IDE</li>
-<li>Select <span class="colour" style="color: rgb(152, 195, 121);">ClientApp&lt;UDP_SELECTIVE_REPEAT_CLIENT&gt;</span><span class="colour" style="color: rgb(152, 195, 121);">  from the launch config file.</span></li>
+<li>Select <span class="colour" style="color:rgb(152, 195, 121)">ClientApp&lt;UDP_SELECTIVE_REPEAT_CLIENT&gt;</span><span class="colour" style="color:rgb(152, 195, 121)">  from the launch config file.</span></li>
 <li>As the you select and run new terminal will pop. In the terminal you can observe the packets getting transferred.
 <img src="screenshots/sel_client.png" alt=""></li>
 </ol>
 <h4 id="note--observe-the-terminal-for-packet-transmission-and-ack">**Note : observe the terminal for packet transmission and ACK **</h4>
+<p><img src="screenshots/sel_output.png" alt=""></p>
 <h4 id="output">Output:</h4>
 <p>At the end of file transmission you can find  file created in the UDP_SELECTIVE_REPEAT_SERVER/resources/serverfiles/&lt;filename that you gave in arguments&gt; with data in it.</p>
 <h1 id="3-standard-tcp-and-udp-implementation">3: Standard TCP and UDP Implementation</h1>
@@ -467,9 +472,9 @@ Following are the step to be followed to run the TCP_STANDARD_SERVER:</p>
 <h4 id="312-output">3.1.2: Output:</h4>
 <p>At the end of file transmission you can find the file transferred and written into the 'received' directory as 'received_file.txt'</p>
 <h4 id="screenshots---tcp">Screenshots - TCP</h4>
-<p>Server:<br>
+<p>Server:
 <img src="screenshots/TCP_Server.png" alt=""></p>
-<p>Client:<br>
+<p>Client:
 <img src="screenshots/TCP_Client.png" alt=""></p>
 <h4 id="321-udp-standard">3.2.1: UDP Standard</h4>
 <p>There are  two subfolders assocaited with TCP - Standard</p>
@@ -497,9 +502,9 @@ Following are the step to be followed to run the UDP_STANDARD_SERVER:</p>
 <h4 id="322-output">3.2.2: Output:</h4>
 <p>At the end of file transmission you can find the file transferred and written into the 'received' directory as 'received_file.txt'</p>
 <h4 id="screenshots---udp">Screenshots - UDP</h4>
-<p>Server:<br>
+<p>Server:
 <img src="screenshots/UDP_Server.png" alt=""></p>
-<p>Client:<br>
+<p>Client:
 <img src="screenshots/UDP_Client.png" alt=""></p>
 
 </body>

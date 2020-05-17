@@ -53,7 +53,26 @@
     "UDP_STANDARD_SERVER": {
       "name": "UDP_STANDARD_SERVER",
       "isOrdered": true,
-      "folders": {},
+      "folders": {
+        "bin": {
+          "name": "bin",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "resources": {
+          "name": "resources",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "src": {
+          "name": "src",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        }
+      },
       "files": {}
     }
   },
