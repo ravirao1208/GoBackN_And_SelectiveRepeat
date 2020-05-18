@@ -20,6 +20,7 @@ public class FileClient {
 
         ostream = socket.getOutputStream();
         try {
+            long startTime = System.currentTimeMillis();
             PrintWriter pwrite = new PrintWriter(ostream, true);
             pwrite.println(fileName);
 
@@ -47,6 +48,8 @@ public class FileClient {
                 bos.write(mybytearray, 0, current);
                 bos.flush();
                 System.out.println("File " + fileName + " downloaded successfully");
+                long elapsedTime = System.currentTimeMillis() - startTime;
+                System.out.println("Time taken:" + elapsedTime + "ms");
             } else
                 throw new ArrayIndexOutOfBoundsException("File Not Found!");
         } catch (ArrayIndexOutOfBoundsException e) {

@@ -25,6 +25,7 @@ public class FileClient {
         try {
             byte[] buffer = fileName.getBytes();
             DatagramPacket request = new DatagramPacket(buffer, buffer.length, InetAddress.getByName(IPAddress), Port);
+            long startTime = System.currentTimeMillis();
             socket.send(request);
             byte[] responseBuffer = new byte[123456789];
             DatagramPacket response = new DatagramPacket(responseBuffer, responseBuffer.length);
@@ -42,6 +43,8 @@ public class FileClient {
                 f.write(responseBuffer, 0, response.getLength());
                 f.close();
                 System.out.println("File " + fileName + " downloaded successfully");
+                long elapsedTime = System.currentTimeMillis() - startTime;
+                System.out.println("Time taken:" + elapsedTime + "ms");
             } else {
                 throw new ArrayIndexOutOfBoundsException("Invalid File or File not found!");
             }
