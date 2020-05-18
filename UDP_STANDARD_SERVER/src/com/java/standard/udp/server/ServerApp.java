@@ -7,14 +7,13 @@ import com.java.standard.udp.server.service.FileServer;
 
 public class ServerApp {
     public static void main(String[] args) throws IOException {
-        if (args.length < 2) {
-            System.out.println("Syntax: Main <Root path> <port>");
+        if (args.length < 1) {
+            System.out.println("Syntax: Main <port>");
             return;
         } else {
-            int port = Integer.parseInt(args[1]);
-            String path = args[0];
+            int port = Integer.parseInt(args[0]);
             try {
-                FileServer server = new FileServer(port, path);
+                FileServer server = new FileServer(port);
                 server.service();
             } catch (SocketException e) {
                 e.printStackTrace();

@@ -15,11 +15,12 @@ public class FileServer {
     private InetAddress clientAddress;
     private int clientPort;
 
-    public FileServer(int port, String path) throws Exception {
+    public FileServer(int port) throws Exception {
         try {
+            String classPath = System.getProperty("java.class.path");
+            this.path = classPath.substring(0, classPath.length() - 3) + "resources";
+            System.out.println("Serving directory '" + path + "' on port " + port + "...");
             socket = new DatagramSocket(port);
-            this.path = path;
-            System.out.println("Server running...");
         } catch (SocketException e) {
             System.out.println(e);
         }

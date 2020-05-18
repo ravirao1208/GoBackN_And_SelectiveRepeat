@@ -1,0 +1,82 @@
+{
+  "name": "",
+  "isOrdered": true,
+  "folders": {
+    "screenshots": {
+      "name": "screenshots",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "TCP_STANDARD_CLIENT": {
+      "name": "TCP_STANDARD_CLIENT",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "TCP_STANDARD_SERVER": {
+      "name": "TCP_STANDARD_SERVER",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "UDP_GO_BACK_N_CLIENT": {
+      "name": "UDP_GO_BACK_N_CLIENT",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "UDP_GO_BACK_N_SERVER": {
+      "name": "UDP_GO_BACK_N_SERVER",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "UDP_SELECTIVE_REPEAT_CLIENT": {
+      "name": "UDP_SELECTIVE_REPEAT_CLIENT",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "UDP_SELECTIVE_REPEAT_SERVER": {
+      "name": "UDP_SELECTIVE_REPEAT_SERVER",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "UDP_STANDARD_CLIENT": {
+      "name": "UDP_STANDARD_CLIENT",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "UDP_STANDARD_SERVER": {
+      "name": "UDP_STANDARD_SERVER",
+      "isOrdered": true,
+      "folders": {
+        "bin": {
+          "name": "bin",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "resources": {
+          "name": "resources",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "src": {
+          "name": "src",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        }
+      },
+      "files": {}
+    }
+  },
+  "files": {
+    "README": 0
+  }
+}

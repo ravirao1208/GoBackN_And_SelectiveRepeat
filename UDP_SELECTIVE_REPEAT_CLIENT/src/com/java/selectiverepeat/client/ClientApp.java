@@ -62,7 +62,7 @@ public class ClientApp {
 						DatagramPacket dp = new DatagramPacket(udpPacket, udpPacket.length, InetAddress.getLocalHost(),
 								serverPortNumber);
 						ds.send(dp);
-						/* System.out.println("Packet Loss Timeout: "+ packetIDToBeResend); */
+						 System.out.println("Packet Loss Timeout: "+ packetIDToBeResend); 
 					}
 					if (ACKNOWLEDGEDPACKETLIST.size() == windowSize) {
 						windowFilled = Boolean.TRUE;
@@ -102,12 +102,12 @@ public class ClientApp {
 					CURRENTACKNOWLEDGEDPACKETNUMBER = Math.max(new BigInteger(sequenceNumberBytes).intValue(),
 							CURRENTACKNOWLEDGEDPACKETNUMBER);
 					ACKNOWLEDGEDPACKETLIST.add(CURRENTACKNOWLEDGEDPACKETNUMBER - 1);
-					/*
-					 * System.out.println(ACKNOWLEDGEDPACKETLIST.size() + "The size of ack list.");
-					 * System.out.println(new BigInteger(sequenceNumberBytes).intValue() +
-					 * ": Received number"); System.out.println(CURRENTACKNOWLEDGEDPACKETNUMBER +
-					 * ": CurrentAckNumber");
-					 */
+					
+					 
+					  System.out.println(new BigInteger(sequenceNumberBytes).intValue() +
+					  ": Received number"); System.out.println(CURRENTACKNOWLEDGEDPACKETNUMBER +
+					  ": CurrentAckNumber");
+					 
 					if (CURRENTACKNOWLEDGEDPACKETNUMBER > CURRENTWINDOWPOINTER) {
 						CURRENTWINDOWPOINTER = CURRENTACKNOWLEDGEDPACKETNUMBER;
 					}
@@ -138,7 +138,7 @@ public class ClientApp {
 		}
 		long endTime = System.currentTimeMillis();
 		long totalTime = endTime - startTime;
-		System.out.println("Total time in milliseconds : " + TimeUnit.MILLISECONDS.toSeconds(totalTime));
+		System.out.println("Total time in seconds : " + TimeUnit.MILLISECONDS.toSeconds(totalTime));
 	}
 
 }

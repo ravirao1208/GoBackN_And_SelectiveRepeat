@@ -18,7 +18,8 @@ public class ClientApp {
         serverHostName = input.next();
         System.out.println("Enter the server port number");
         serverPortNumber = input.nextInt();
-        fileName = "clientsidefile";
+        System.out.println("Enter the file name with extension");
+        fileName = input.next();
         System.out.println("Enter the window size");
         windowSize = input.nextInt();
         System.out.println("Enter the Max Segment size");
