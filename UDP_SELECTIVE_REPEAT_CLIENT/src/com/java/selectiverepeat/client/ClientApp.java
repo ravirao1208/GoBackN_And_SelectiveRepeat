@@ -103,7 +103,7 @@ public class ClientApp {
 							CURRENTACKNOWLEDGEDPACKETNUMBER);
 					ACKNOWLEDGEDPACKETLIST.add(CURRENTACKNOWLEDGEDPACKETNUMBER - 1);
 					
-					  System.out.println(ACKNOWLEDGEDPACKETLIST.size() + "The size of ack list.");
+					 
 					  System.out.println(new BigInteger(sequenceNumberBytes).intValue() +
 					  ": Received number"); System.out.println(CURRENTACKNOWLEDGEDPACKETNUMBER +
 					  ": CurrentAckNumber");
