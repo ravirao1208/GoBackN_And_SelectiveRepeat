@@ -17,7 +17,7 @@ public class ServerApp {
         portNumber = input.nextInt();
         System.out.println("Enter File name for storing the packet");
         fileName = input.next();
-        Server server = Server.getInstance(portNumber, fileName);
+        Server server = Server.getInstance(portNumber, fileName); // Init UDP Socket
         server.receiveData(fileName);
     }
 }

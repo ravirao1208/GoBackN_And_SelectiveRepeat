@@ -33,36 +33,40 @@ public class Server {
     }
 
     public String createServerFile(String FILENAME) throws IOException {
-        String fileName = System.getProperty("java.class.path") + "\\..\\resources\\serverfiles\\"
-                + FILENAME.trim() + ".txt";
+        String fileName = System.getProperty("java.class.path") + "\\..\\resources\\serverfiles\\" + FILENAME.trim()
+                + ".txt";
         File baseFile = new File(fileName);
         baseFile.createNewFile();
         return fileName;
     }
 
-    public void receiveData(String fileName) throws FileNotFoundException,
-            UnsupportedEncodingException, IOException, InterruptedException {
-        byte[] b1 = new byte[1024];
+    public void receiveData(String fileName)
+            throws FileNotFoundException, UnsupportedEncodingException, IOException, InterruptedException {
+        byte[] b1 = new byte[1024]; // placeholder
+        // creates file at server
+        // creates outStreamWriter
         PrintWriter writer = new PrintWriter(this.createServerFile(fileName), "UTF-8");
         while (true) {
             DatagramPacket dp = new DatagramPacket(b1, b1.length);
             datagramSocket.receive(dp);
-            ServerPacket currentPacket = ServerHelper.decipherPacket(b1);
-            int sequenceNumber = currentPacket.getSequenceNumber();
+            ServerPacket currentPacket = ServerHelper.decipherPacket(b1); // deserializing 
+            int sequenceNumber = currentPacket.getSequenceNumber(); // rec-packet seq-no
+            // eg : 5 <= 5 // valid and write content to file and send ack
+            // eg : 5 <= 6 // Duplicate packet recived :: we dont write but we send ack
+            // eg : 5 <= 4 // will drop packet and wont send ack
             if (sequenceNumber <= CURRENTSEQUENCENUMBER) {
                 Thread.sleep(10);
                 if (sequenceNumber == CURRENTSEQUENCENUMBER) {
                     BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true));
                     writer.println(currentPacket.getData());
                     out.close();
-                    System.out.println("Packet No : " + sequenceNumber
-                            + "\t Status : Received \t Time : " + System.currentTimeMillis());
+                    System.out.println("Packet No : " + sequenceNumber + "\t Status : Received \t Time : "
+                            + System.currentTimeMillis());
                     CURRENTSEQUENCENUMBER++;
                 }
-                byte[] acknowledgmentNumberBytes =
-                        ServerHelper.getAcknowledgmentNumber(sequenceNumber);
-                DatagramPacket dp2 = new DatagramPacket(acknowledgmentNumberBytes,
-                        acknowledgmentNumberBytes.length, dp.getAddress(), dp.getPort());
+                byte[] acknowledgmentNumberBytes = ServerHelper.getAcknowledgmentNumber(sequenceNumber);
+                DatagramPacket dp2 = new DatagramPacket(acknowledgmentNumberBytes, acknowledgmentNumberBytes.length,
+                        dp.getAddress(), dp.getPort());
                 datagramSocket.send(dp2);
                 System.out.println("Packet No : " + sequenceNumber + "\t ACK : Sent");
             } else {
