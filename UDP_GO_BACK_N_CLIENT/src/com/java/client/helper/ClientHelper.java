@@ -14,13 +14,13 @@ public class ClientHelper {
     // the method is used to convert the data to packet
     public static byte[] finalPacketFrames(byte[] data, int MSSSize, int sequenceNumber) {
         byte[] finalPacket = new byte[data.length + 8];
-        byte[] checkSumByte = checksum(data);
-        byte[] sequenceNumberBytes = sequenceNumberBytes(sequenceNumber);
-        byte[] dataTypeIndicator = getDataTypeIndicatorByte(21845);
-        System.arraycopy(sequenceNumberBytes, 0, finalPacket, 0, 4);
-        System.arraycopy(checkSumByte, 0, finalPacket, 4, 2);
-        System.arraycopy(dataTypeIndicator, 0, finalPacket, 6, 2);
-        System.arraycopy(data, 0, finalPacket, 8, data.length);
+        byte[] checkSumByte = checksum(data); // calculate check sum
+        byte[] sequenceNumberBytes = sequenceNumberBytes(sequenceNumber); // cpnvert sequence no to Byte of array
+        byte[] dataTypeIndicator = getDataTypeIndicatorByte(21845); // To Indicate type of data
+        System.arraycopy(sequenceNumberBytes, 0, finalPacket, 0, 4); // 0-3 seq-no
+        System.arraycopy(checkSumByte, 0, finalPacket, 4, 2); // 4-6 check-sum
+        System.arraycopy(dataTypeIndicator, 0, finalPacket, 6, 2); // 6-8 datatype
+        System.arraycopy(data, 0, finalPacket, 8, data.length); // 8- actual data
         /*
          * System.out.println(finalPacket);
          * System.out.println("finalPacketSize"+finalPacket.length);
@@ -33,10 +33,10 @@ public class ClientHelper {
         int numOfChunks = (int) Math.ceil((double) array.length / chunkSize);
         byte[][] output = new byte[numOfChunks][];
         for (int i = 0; i < numOfChunks; ++i) {
-            int start = i * chunkSize;
-            int length = Math.min(array.length - start, chunkSize);
+            int start = i * chunkSize;// start pos
+            int length = Math.min(array.length - start, chunkSize);// end pos
             byte[] temp = new byte[length];
-            System.arraycopy(array, start, temp, 0, length);
+            System.arraycopy(array, start, temp, 0, length); // src, startpos, dest , destpos, lenght
             output[i] = temp;
         }
         return output;
@@ -73,6 +73,7 @@ public class ClientHelper {
         return ByteBuffer.allocate(4).putInt(number).array();
     }
 
+    // Type of data being transmitted
     public static byte[] getDataTypeIndicatorByte(int number) {
         BigInteger dataInt = BigInteger.valueOf(number);
         return dataInt.toByteArray();
@@ -92,17 +93,10 @@ public class ClientHelper {
             DatagramPacket dp = new DatagramPacket(udpPacket, udpPacket.length, serverAdress, serverPort);
             TimeUnit.MILLISECONDS.sleep(50);
             ds.send(dp);
+            // noting down the time that is allowed to wait for ack before re-sending
+            // formate time <-> Seq-no
             Client.PACKETSENDTIME.put(System.currentTimeMillis() + 10000, i);
-
         }
-
-    }
-
-    public static void printInfoLostPackets(int currentAckPointer, int lastPacketSend) {
-        for (int i = currentAckPointer; i < lastPacketSend; i++) {
-            System.out.println("Timeout,Sequence Number : " + i);
-        }
-
     }
 
 }

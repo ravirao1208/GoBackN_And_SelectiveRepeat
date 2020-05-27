@@ -24,9 +24,13 @@ public class ClientApp {
         windowSize = input.nextInt();
         System.out.println("Enter the Max Segment size");
         maximumSegmentSize = input.nextInt();
+        // get client instant and also creates UPD socket
+        // also init 2 thread (PackerTimer) and(packerReceiver)
         Client client = Client.getInstane();
+        // process to send file 
         client.sendpacketToServer(serverHostName, serverPortNumber, fileName, windowSize,
                 maximumSegmentSize);
+     
         long endTime = System.currentTimeMillis();
         long totalTime = endTime - startTime;
         System.out.println("Total time in seconds : " + TimeUnit.MILLISECONDS.toSeconds(totalTime));

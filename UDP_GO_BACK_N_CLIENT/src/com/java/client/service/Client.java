@@ -52,27 +52,27 @@ public class Client {
         this.datagramSocket = datagramSocket;
     }
 
-    public void sendpacketToServer(String serverHostName, int serverPortNumber, String fileName,
-            int windowSize, int maximumSegmentSize) throws IOException, InterruptedException {
+    public void sendpacketToServer(String serverHostName, int serverPortNumber, String fileName, int windowSize,
+            int maximumSegmentSize) throws IOException, InterruptedException {
         WINDOWSIZE = windowSize;
         try {
-            Path path = Paths
-                    .get(System.getProperty("java.class.path") + "\\..\\resources\\" + fileName);
-            byte[] byteArray = Files.readAllBytes(path);
+            Path path = Paths.get(System.getProperty("java.class.path") + "\\..\\resources\\" + fileName);
+            byte[] byteArray = Files.readAllBytes(path); // reads file content
+            // divides byteArray /MSS
             byte[][] byteArray2 = ClientHelper.chunkArray(byteArray, maximumSegmentSize);
             System.out.println("Total no of packets :" + byteArray2.length);
             InetAddress serverAdress = InetAddress.getByName(serverHostName);
-            while (CURRENTWINDOWPOINTER <= byteArray2.length - 1
-                    && CURRENTACKNOWLEDGEDSTATUS.equals(Boolean.TRUE)) {
-                if (CONNECTION_TIME_OUT <= System.currentTimeMillis()
-                        && CONNECTION_TIME_OUT != null) {
-                    System.out
-                            .println("Server couldn't respond: Please try again after some time.");
+            // eg 0 <= 100
+            while (CURRENTWINDOWPOINTER <= byteArray2.length - 1) {
+                // eq : Future time <= CurrentTime ::Connection time out exist since no response
+                if (CONNECTION_TIME_OUT <= System.currentTimeMillis() && CONNECTION_TIME_OUT != null) {
+                    System.out.println("Server couldn't respond: Please try again after some time.");
                     isServerAvailable = false;
                     break;
                 }
-                goBackNProtocol(CURRENTWINDOWPOINTER, windowSize - 1, byteArray2,
-                        Client.getInstane(), maximumSegmentSize, serverAdress, serverPortNumber);
+                // eg 0 , 4, data , MMS, Host ,port
+                goBackNProtocol(CURRENTWINDOWPOINTER, windowSize - 1, byteArray2, Client.getInstane(),
+                        maximumSegmentSize, serverAdress, serverPortNumber);
             }
             if (!isServerAvailable) {
                 System.out.println("Client program terminated!");
@@ -91,10 +91,11 @@ public class Client {
         }
     }
 
-    private void goBackNProtocol(int sendingWindowPointer, int windowSize, byte[][] byteArray,
-            Client instance, int maximumSegmentSize, InetAddress serverAdress, int serverPortNumber)
+    private void goBackNProtocol(int sendingWindowPointer, int windowSize, byte[][] byteArray, Client instance,
+            int maximumSegmentSize, InetAddress serverAdress, int serverPortNumber)
             throws SocketException, IOException, InterruptedException {
         int endOfWindow;
+        // eg : eg tp = 53
         if (sendingWindowPointer + windowSize >= byteArray.length - 1) {
             endOfWindow = byteArray.length - 1;
         } else {
@@ -102,16 +103,15 @@ public class Client {
         }
 
         System.out.println("_______________________________________________________");
-        System.out.println(
-                "Window Pointer start and end : " + sendingWindowPointer + " - " + endOfWindow);
+        System.out.println("Window Pointer start and end : " + sendingWindowPointer + " - " + endOfWindow);
         for (int i = sendingWindowPointer; i <= endOfWindow; i++) {
             byte[] udpPacket = ClientHelper.finalPacketFrames(byteArray[i], maximumSegmentSize, i);
-            DatagramPacket dp =
-                    new DatagramPacket(udpPacket, udpPacket.length, serverAdress, serverPortNumber);
+            DatagramPacket dp = new DatagramPacket(udpPacket, udpPacket.length, serverAdress, serverPortNumber);
             if (Client.ACKHISTORY.get(i) == null && !PACKETSENDTIME.values().contains(i)) {
                 Client.getInstane().getDatagramSocket().send(dp);
-                System.out.println("Packet No: " + i + "\t Status : Sent \t Time : "
-                        + System.currentTimeMillis());
+                System.out.println("Packet No: " + i + "\t Status : Sent \t Time : " + System.currentTimeMillis());
+                // Noting down the time that is allowed to wait for ack before re-sending
+                // formate time <-> Seq-no
                 PACKETSENDTIME.put(System.currentTimeMillis() + 10000, i);
                 Thread.sleep(30);
             }
